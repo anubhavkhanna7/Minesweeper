@@ -1,40 +1,40 @@
-function createdGridWithBombs(totalTiles, bombCount) {
+function createdGridWithMines(totalTiles, mineCount) {
   let grid = Array(totalTiles).fill(0);
-  while (bombCount > 0) {
-    let bombTile = Math.floor(Math.random() * (totalTiles));
-    if(grid[bombTile] !== -1) {
-      grid[bombTile] = -1;
-      bombCount--;
+  while (mineCount > 0) {
+    let mineTile = Math.floor(Math.random() * (totalTiles));
+    if(grid[mineTile] !== -1) {
+      grid[mineTile] = -1;
+      mineCount--;
     }
   }
   return grid;
 }
 
-function calculateMatrix(size = 9, dificulty = 'EASY', customBombs = 0) {
+function calculateMatrix(size = 9, dificulty = 'EASY', customMines = 0) {
   let totalTiles = size * size;
-  let countOfBombs;
+  let countOfMines;
   switch (dificulty) {
     case 'NOVICE':
-      countOfBombs = (totalTiles*10)/100;
+      countOfMines = (totalTiles*10)/100;
       break;
     case 'EASY':
-      countOfBombs = (totalTiles*15)/100;
+      countOfMines = (totalTiles*15)/100;
       break;
     case 'MEDIUM':
-      countOfBombs = (totalTiles*20)/100;
+      countOfMines = (totalTiles*20)/100;
       break;
     case 'HARD':
-      countOfBombs = (totalTiles*25)/100;
+      countOfMines = (totalTiles*25)/100;
       break;
     case 'EXTREME':
-      countOfBombs = (totalTiles*30)/100;
+      countOfMines = (totalTiles*30)/100;
       break;
     case 'INSANE':
-      countOfBombs = (totalTiles*35)/100;
+      countOfMines = (totalTiles*35)/100;
       break;
     case 'CUSTOM':
-      countOfBombs = customBombs;
+      countOfMines = customMines;
       break;
   }
-  return createdGridWithBombs(totalTiles, countOfBombs);
+  return createdGridWithMines(totalTiles, countOfMines);
 }
